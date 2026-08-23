@@ -1,0 +1,27 @@
+{
+  "name": "التاجر الذكي",
+  "short_name": "التاجر الذكي",
+  "description": "دفتر رقمي محلي للجهات والأصناف والأسعار وحساب تكلفة الحاوية والتسعير",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F7F4EC",
+  "theme_color": "#12324A",
+  "icons": [
+    {
+      "src": "/assets/port-ledger-mark.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/port-ledger-mark.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "maskable"
+    }
+  ]
+}

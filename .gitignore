@@ -1,0 +1,37 @@
+# Dependencies and package-manager stores
+**/node_modules/
+.pnpm-store/
+
+# Build and test outputs
+dist/
+build/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Local configuration and secrets
+.project-config.json
+.manus/
+.manus-logs/
+.env
+.env.*
+!.env.example
+
+# Runtime and generated PWA artifacts
+client/public/__manus__/
+logs/
+*.log
+*.pid
+*.pid.lock
+
+# Editor, OS, and temporary files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+tmp/
+temp/
+.cache/

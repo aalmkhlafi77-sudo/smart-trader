@@ -1,0 +1,1179 @@
+@import "tailwindcss";
+/* اتجاه التصميم: دفتر الميناء — خطوط عربية محلية للحفاظ على المظهر من دون طلبات خارجية. */
+@import "tw-animate-css";
+
+@font-face {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/cairo-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/cairo-600.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/cairo-800.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-sans-arabic-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-sans-arabic-500.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-sans-arabic-600.ttf") format("truetype");
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* اتجاه التصميم: دفتر الميناء — حبر بحري، حقول زرقاء رمادية هادئة، أخضر محفوظات، ورق فاتح */
+  --ink: #17324D;
+  --ink-deep: #102B43;
+  --field-surface: #F4F7F8;
+  --field-border: #CBD5DF;
+  --field-focus: #EAF2F8;
+  --field-focus-border: #2E74B5;
+  --field-disabled: #E9EEF1;
+  --saved-spec: #E4F3EC;
+  --guidance: #7A8794;
+  --port-green: oklch(0.45 0.098 158);
+  --port-green-soft: var(--saved-spec);
+  --amber: #D4913A;
+  --amber-field: var(--field-surface);
+  --amber-line: var(--field-border);
+  --paper: oklch(0.975 0.011 87);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --radius: 0.35rem;
+  --primary: var(--ink);
+  --primary-foreground: oklch(0.98 0.008 87);
+  --sidebar-primary: oklch(0.45 0.098 158);
+  --sidebar-primary-foreground: oklch(0.98 0.008 87);
+  --chart-1: oklch(0.45 0.098 158);
+  --chart-2: oklch(0.31 0.058 249);
+  --chart-3: oklch(0.72 0.12 78);
+  --chart-4: oklch(0.55 0.09 210);
+  --chart-5: oklch(0.62 0.13 40);
+  --background: #F9FBFC;
+  --foreground: var(--ink);
+  --card: #FFFFFF;
+  --card-foreground: var(--ink);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--ink);
+  --secondary: #EEF4F6;
+  --secondary-foreground: var(--ink);
+  --muted: var(--field-surface);
+  --muted-foreground: var(--guidance);
+  --accent: var(--saved-spec);
+  --accent-foreground: oklch(0.3 0.06 158);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: var(--field-border);
+  --input: var(--field-border);
+  --ring: var(--field-focus-border);
+  --sidebar: var(--ink);
+  --sidebar-foreground: #F4F7F8;
+  --sidebar-accent: color-mix(in srgb, var(--ink) 84%, white);
+  --sidebar-accent-foreground: oklch(0.97 0.01 87);
+  --sidebar-border: oklch(0.4 0.05 249);
+  --sidebar-ring: oklch(0.45 0.098 158);
+}
+
+/* هوية النشاط: الأخضر المينائي للاستيراد، الأزرق للصناعة، والعنبر للتجزئة واللوجستيات. */
+html[data-activity="wholesale"] { --port-green: oklch(0.48 0.12 248); --port-green-soft: oklch(0.94 0.035 248); --ink-deep: oklch(0.27 0.045 248); }
+html[data-activity="retail"] { --port-green: oklch(0.62 0.14 58); --port-green-soft: oklch(0.96 0.04 58); --ink-deep: oklch(0.3 0.05 58); }
+html[data-activity="manufacturing"] { --port-green: oklch(0.5 0.1 215); --port-green-soft: oklch(0.94 0.03 215); --ink-deep: oklch(0.27 0.04 215); }
+html[data-activity="logistics"] { --port-green: oklch(0.53 0.12 78); --port-green-soft: oklch(0.95 0.04 78); --ink-deep: oklch(0.29 0.055 78); }
+html[data-activity="custom"] { --port-green: oklch(0.5 0.11 315); --port-green-soft: oklch(0.95 0.035 315); --ink-deep: oklch(0.28 0.05 315); }
+
+.language-switcher select { font-family: inherit; }
+.language-switcher:focus-within { box-shadow: 0 0 0 3px color-mix(in oklab, var(--port-green) 22%, transparent); }
+
+.dark {
+  --primary: var(--color-blue-700);
+  --primary-foreground: var(--color-blue-50);
+  --sidebar-primary: var(--color-blue-500);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.85 0.005 65);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.85 0.005 65);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.85 0.005 65);
+  --secondary: oklch(0.24 0.006 286.033);
+  --secondary-foreground: oklch(0.7 0.005 65);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground:  oklch(0.92 0.005 65);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.488 0.243 264.376);
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.85 0.005 65);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground:  oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.488 0.243 264.376);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    background-image:
+      linear-gradient(to bottom, rgba(18, 50, 74, 0.028) 1px, transparent 1px);
+    background-size: 100% 2.25rem;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: "Cairo", "IBM Plex Sans Arabic", system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  html[dir="ltr"] body {
+    font-family: "Manrope", system-ui, sans-serif;
+  }
+
+  html[dir="ltr"] h1,
+  html[dir="ltr"] h2,
+  html[dir="ltr"] h3,
+  html[dir="ltr"] h4,
+  html[dir="ltr"] .font-display {
+    font-family: "Manrope", system-ui, sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  html[dir="ltr"] input,
+  html[dir="ltr"] textarea,
+  html[dir="ltr"] select {
+    text-align: left;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /* حقل يُدخله المستخدم: خلفية كهرمانية. نتيجة محسوبة: خلفية خضراء. لا يجوز الخلط. */
+  .field-input {
+    background-color: var(--field-surface) !important;
+    border-color: var(--field-border) !important;
+    color: var(--ink) !important;
+    min-height: 2.5rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
+  }
+
+  .field-input:focus-visible {
+    background-color: var(--field-focus) !important;
+    border-color: var(--field-focus-border) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--field-focus-border) 20%, transparent);
+  }
+
+  .field-input:disabled,
+  [data-slot="input"]:disabled,
+  [data-slot="textarea"]:disabled {
+    background-color: var(--field-disabled) !important;
+    border-color: var(--field-border) !important;
+    color: var(--guidance) !important;
+    opacity: 1;
+  }
+
+  .field-input::placeholder,
+  [data-slot="input"]::placeholder,
+  [data-slot="textarea"]::placeholder {
+    color: var(--guidance) !important;
+    opacity: 1;
+  }
+
+  /* حقول التاريخ أصلها رقمية؛ تفرض LTR كي لا يعكس متصفح RTL ترتيب اليوم والشهر والسنة. */
+  .date-input,
+  .field-input[type="date"],
+  .field-input[type="datetime-local"],
+  [data-slot="input"][type="date"],
+  [data-slot="input"][type="datetime-local"] {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: plaintext;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .date-input::-webkit-datetime-edit,
+  .field-input[type="date"]::-webkit-datetime-edit,
+  .field-input[type="datetime-local"]::-webkit-datetime-edit {
+    direction: ltr;
+    text-align: left;
+  }
+
+  .english-date-picker {
+    min-height: 2.75rem;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  .english-date-calendar .rdp-root,
+  .english-date-calendar .rdp-month,
+  .english-date-calendar .rdp-caption_label,
+  .english-date-calendar .rdp-weekday,
+  .english-date-calendar .rdp-day_button {
+    direction: ltr;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* قوائم Radix هي حقول فعلية حتى لو كانت أزراراً في البنية الداخلية. */
+  button[role="combobox"] {
+    background-color: var(--field-surface) !important;
+    border-color: var(--field-border) !important;
+    color: var(--ink) !important;
+    transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
+  }
+
+  button[role="combobox"]:focus-visible,
+  button[role="combobox"][data-state="open"] {
+    background-color: var(--field-focus) !important;
+    border-color: var(--field-focus-border) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--field-focus-border) 20%, transparent);
+  }
+
+  .result-card {
+    background: linear-gradient(135deg, color-mix(in oklab, var(--port-green-soft) 92%, white), var(--port-green-soft));
+    border: 1px solid color-mix(in oklab, var(--port-green) 52%, transparent);
+    border-inline-start: 3px solid var(--port-green);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+
+  .ledger-sheet {
+    position: relative;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 0 rgba(18, 50, 74, 0.06);
+    overflow: hidden;
+  }
+
+  .ledger-sheet::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, color-mix(in oklab, var(--port-green) 56%, transparent), transparent);
+    opacity: 0.72;
+  }
+
+  .ledger-tab {
+    border-inline-start: 3px solid var(--port-green);
+  }
+
+  /* رأس السجل: هادئ وواضح دون خطوط أو زخارف متكررة. */
+  .ledger-head {
+    position: relative;
+    background: linear-gradient(90deg, color-mix(in oklab, var(--port-green-soft) 38%, var(--card)), var(--card) 54%);
+    border-bottom: 2px double color-mix(in oklab, var(--ink) 18%, transparent);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.78);
+  }
+
+  .ledger-head::before {
+    content: "";
+    width: 0.32rem;
+    height: 1.15rem;
+    border-radius: 999px;
+    background: var(--port-green);
+    margin-inline-start: 0.1rem;
+  }
+
+  /* نظام واجهة موحد: بطاقة سجل، مجموعة إدخال، وشريط قرار واحد. */
+  .metric-card {
+    background: linear-gradient(135deg, var(--card), color-mix(in oklab, var(--port-green-soft) 38%, var(--card)));
+    border: 1px solid color-mix(in oklab, var(--port-green) 22%, var(--border));
+    border-inline-start: 3px solid var(--port-green);
+    box-shadow: 0 10px 25px -25px rgba(18, 50, 74, 0.6);
+  }
+
+  .record-card {
+    border: 1px solid var(--border);
+    border-inline-start: 2px solid color-mix(in oklab, var(--port-green) 62%, transparent);
+    background: linear-gradient(90deg, color-mix(in oklab, var(--port-green-soft) 24%, var(--card)), var(--card) 30%);
+    box-shadow: none;
+    transition: transform 160ms var(--ease-out), border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+  }
+
+  .record-card:hover {
+    border-color: color-mix(in oklab, var(--port-green) 52%, var(--border));
+    box-shadow: inset 3px 0 0 var(--port-green);
+    transform: translateX(-1px);
+  }
+
+  .form-cluster {
+    border: 1px solid color-mix(in oklab, var(--ink) 13%, var(--border));
+    background: color-mix(in oklab, var(--secondary) 48%, var(--card));
+    padding: 0.875rem;
+    border-radius: 0.45rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .form-cluster-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-bottom: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+    padding-bottom: 0.55rem;
+  }
+
+  .form-cluster-title {
+    color: var(--ink);
+    font-family: "Cairo", system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .form-cluster-note {
+    color: var(--muted-foreground);
+    font-size: 0.65rem;
+    line-height: 1.45;
+  }
+
+  .form-action-bar {
+    min-height: 2.75rem;
+    box-shadow: 0 11px 22px -18px color-mix(in oklab, var(--ink) 65%, transparent);
+  }
+
+  .action-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--secondary) 72%, var(--card));
+    padding: 0.125rem;
+    border-radius: 0.4rem;
+  }
+
+  .action-strip [data-slot="button"] {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .ledger-empty {
+    position: relative;
+    overflow: hidden;
+    border-color: color-mix(in oklab, var(--ink) 20%, var(--border)) !important;
+    border-style: solid !important;
+    background: color-mix(in oklab, var(--secondary) 48%, var(--card)) !important;
+    min-height: 7rem;
+  }
+
+  .ledger-empty::after {
+    content: "سجل بانتظار أول قيد";
+    position: absolute;
+    inset-inline-end: 0.75rem;
+    inset-block-end: 0.55rem;
+    color: color-mix(in oklab, var(--ink) 46%, transparent);
+    font-family: "Cairo", system-ui, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  .ledger-empty-code {
+    color: color-mix(in oklab, var(--port-green) 76%, var(--ink));
+    font-family: "Cairo", system-ui, sans-serif;
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ledger-empty-lines {
+    width: 100%;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .ledger-empty-lines span {
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, color-mix(in oklab, var(--port-green) 30%, transparent), color-mix(in oklab, var(--ink) 10%, transparent), transparent);
+  }
+
+  .local-ledger-seal {
+    border-inline-start: 2px solid var(--port-green);
+    background: color-mix(in oklab, var(--port-green) 10%, transparent);
+    padding: 0.55rem 0.6rem;
+  }
+
+  .brand-seal {
+    border: 2px double color-mix(in srgb, var(--port-green) 68%, white) !important;
+    border-radius: 0.4rem !important;
+    background-color: var(--field-surface) !important;
+    box-shadow: 0 3px 0 color-mix(in srgb, var(--ink) 18%, transparent), inset 0 0 0 2px rgba(255, 255, 255, 0.76), inset 0 0 0 4px color-mix(in srgb, var(--port-green) 9%, transparent);
+  }
+
+  /* رقم/ختم المستند في زاوية الصحيفة */
+  .ledger-stamp {
+    font-family: "Cairo", system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: color-mix(in oklab, var(--ink) 68%, transparent);
+    background: color-mix(in oklab, var(--card) 62%, var(--secondary));
+    border: 1px solid color-mix(in oklab, var(--ink) 16%, transparent);
+    border-radius: 999px;
+    padding: 3px 7px;
+    white-space: nowrap;
+  }
+
+  /* الأرقام المالية: سلطة بصرية أعلى وأرقام مصفوفة عمودياً */
+  .ledger-figure {
+    font-family: "Cairo", system-ui, sans-serif;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42);
+  }
+
+  .ledger-head h2 {
+    letter-spacing: -0.025em;
+  }
+
+  .ledger-register-code {
+    border: 1px solid color-mix(in oklab, var(--port-green) 42%, transparent);
+    color: var(--port-green);
+    background: var(--port-green-soft);
+    font-family: "Cairo", system-ui, sans-serif;
+    font-size: 0.56rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 0.1rem 0.3rem;
+    line-height: 1;
+  }
+
+  /* خط الحساب: الموتيف المميز لتسلسل التكلفة */
+  .calc-line {
+    position: relative;
+    padding-inline-start: 1.35rem;
+  }
+  .calc-line::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0.42rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--ink) 45%, transparent),
+      var(--port-green)
+    );
+  }
+  .calc-node {
+    position: relative;
+  }
+  .calc-node::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -1.28rem;
+    top: 1.05rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--card);
+    border: 2px solid color-mix(in oklab, var(--ink) 55%, transparent);
+  }
+  .calc-node[data-total="true"]::before {
+    border-color: var(--port-green);
+    background: var(--port-green);
+  }
+
+  /* منطقة تمرير أفقي لمسية: شريط ظاهر داخل البطاقة ولا يختفي خلف الشريط السفلي */
+  .touch-scroll-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.75rem;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--ink) 45%, transparent) transparent;
+  }
+  .touch-scroll-x::-webkit-scrollbar {
+    height: 8px;
+  }
+  .touch-scroll-x::-webkit-scrollbar-track {
+    background: color-mix(in oklab, var(--ink) 8%, transparent);
+    border-radius: 999px;
+  }
+  .touch-scroll-x::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--ink) 45%, transparent);
+    border-radius: 999px;
+  }
+
+  @media (max-width: 1023px) {
+    .form-action-bar {
+      position: sticky;
+      bottom: 4.65rem;
+      z-index: 10;
+      border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
+    }
+  }
+
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+
+  /* غلاف قفل الدفتر: صورة مينائية تجارية خلف زجاج شفاف، مع وميض متزن عند الدخول. */
+  .login-hero {
+    background: var(--ink-deep);
+  }
+
+  .login-hero-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: scale(1.025);
+  }
+
+  .glass-access-card {
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 24px 70px rgba(3, 22, 35, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.54);
+  }
+
+  .access-form-surface {
+    background-color: rgba(252, 249, 239, 0.88);
+    background-image: linear-gradient(to bottom, transparent 31px, rgba(18, 50, 74, 0.075) 32px);
+    background-size: 100% 32px;
+  }
+
+  .access-document-band {
+    border-block: 1px solid color-mix(in oklab, var(--ink) 23%, transparent);
+    padding-block: 0.45rem;
+  }
+
+  .glass-login-submit {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .glass-login-submit::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(112deg, transparent 24%, rgba(255, 255, 255, 0.58) 49%, transparent 74%);
+    transform: translateX(-130%);
+  }
+
+  .access-shake {
+    animation: access-shake 420ms var(--ease-out) both;
+  }
+
+  @keyframes access-shake {
+    0%, 100% { transform: translateX(0); }
+    18% { transform: translateX(-9px); }
+    36% { transform: translateX(8px); }
+    54% { transform: translateX(-6px); }
+    72% { transform: translateX(4px); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .login-hero-image {
+      animation: harbor-drift 16s var(--ease-out) infinite alternate;
+    }
+
+    .glass-access-card {
+      animation: glass-breathe 4.6s ease-in-out infinite;
+    }
+
+    .glass-login-submit::before {
+      animation: glass-sheen 3.8s var(--ease-out) infinite;
+    }
+  }
+
+  @keyframes harbor-drift {
+    from { transform: scale(1.025) translate3d(0, 0, 0); }
+    to { transform: scale(1.08) translate3d(-1.25%, -0.8%, 0); }
+  }
+
+  @keyframes glass-breathe {
+    0%, 100% { box-shadow: 0 24px 70px rgba(3, 22, 35, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.54); }
+    50% { box-shadow: 0 28px 78px rgba(3, 22, 35, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.72); }
+  }
+
+  @keyframes glass-sheen {
+    0%, 53% { transform: translateX(-130%); }
+    76%, 100% { transform: translateX(130%); }
+  }
+}
+
+/* Port Ledger: انتقال قصير يوضح استبدال شاشة العمليات النشطة. */
+@keyframes calculator-screen-in {
+  from { opacity: 0.3; transform: translateY(5px) scale(0.992); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.calculator-screen-switch {
+  animation: calculator-screen-in 180ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+/* أسلوب الحاسبة: لوحة عمليات ملاحية داكنة بطبقات زجاجية وإضاءة سيان، بحجم تشغيلي مدمج. */
+.calculator-window-shell {
+  border: 1px solid rgba(123, 232, 255, 0.55);
+  border-radius: 1.2rem;
+  background:
+    radial-gradient(circle at 84% 8%, rgba(47, 207, 235, 0.13), transparent 28%),
+    radial-gradient(circle at 7% 92%, rgba(17, 122, 157, 0.14), transparent 32%),
+    linear-gradient(145deg, #07141d, #0a222d 54%, #061119);
+  box-shadow: 0 22px 68px rgba(1, 10, 16, 0.64), 0 0 0 3px rgba(77, 219, 248, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.calculator-window-toolbar {
+  background: linear-gradient(to bottom, rgba(6, 20, 29, 0.94), rgba(6, 20, 29, 0.42));
+}
+
+.calculator-window-toolbar button {
+  color: #c8f5ff;
+}
+
+.multi-calc-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(141, 232, 255, 0.52);
+  border-radius: 0.95rem;
+  color: #e7fbff;
+  background:
+    linear-gradient(rgba(92, 222, 246, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 222, 246, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 10% 18%, rgba(13, 129, 157, 0.25), transparent 24%),
+    radial-gradient(circle at 91% 80%, rgba(48, 213, 241, 0.1), transparent 24%),
+    linear-gradient(135deg, #07151d, #0d2934 56%, #07151c);
+  background-size: 22px 22px, 22px 22px, auto, auto, auto;
+  box-shadow: inset 0 0 45px rgba(2, 9, 14, 0.66), 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+.multi-calc-shell::before,
+.multi-calc-shell::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.multi-calc-shell::before {
+  inset: 0;
+  background: linear-gradient(118deg, transparent 26%, rgba(187, 245, 255, 0.08) 38%, transparent 48%);
+  opacity: 0.7;
+}
+
+.multi-calc-shell::after {
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(101, 233, 255, 0.9), transparent);
+  box-shadow: 0 0 14px rgba(101, 233, 255, 0.9);
+}
+
+.multi-calc-header,
+.multi-calc-body {
+  position: relative;
+  z-index: 1;
+}
+
+.multi-calc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid rgba(141, 232, 255, 0.25);
+  background: linear-gradient(100deg, rgba(10, 34, 44, 0.92), rgba(28, 52, 60, 0.72));
+}
+
+.multi-calc-header-icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.15rem;
+  height: 2.15rem;
+  place-items: center;
+  color: #9cf7ff;
+  border: 1px solid rgba(167, 241, 255, 0.54);
+  border-radius: 0.75rem;
+  background: linear-gradient(145deg, rgba(199, 245, 255, 0.18), rgba(36, 68, 78, 0.5));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 20px rgba(62, 212, 237, 0.12);
+}
+
+.multi-calc-header-chip,
+.multi-calc-counter,
+.multi-calc-active-badge {
+  border: 1px solid rgba(157, 236, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(151, 233, 250, 0.1);
+  color: #b9f7ff;
+  padding: 0.2rem 0.4rem;
+}
+
+.multi-calc-body {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.6rem;
+}
+
+.multi-calc-workbench,
+.multi-calc-side {
+  min-width: 0;
+  border: 1px solid rgba(145, 228, 246, 0.33);
+  border-radius: 0.8rem;
+  background: linear-gradient(145deg, rgba(10, 29, 38, 0.9), rgba(16, 43, 53, 0.72));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 9px 22px rgba(0, 0, 0, 0.18);
+}
+
+.multi-calc-workbench { padding: 0.6rem; }
+.multi-calc-side { padding: 0.56rem; }
+
+.multi-calc-active-bar,
+.multi-calc-side-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(153, 231, 248, 0.2);
+}
+
+.multi-calc-active-badge {
+  display: inline-block;
+  margin-inline-start: 0.25rem;
+  padding: 0.12rem 0.45rem;
+  color: #9effd0;
+  border-color: rgba(82, 234, 154, 0.48);
+  background: rgba(53, 205, 125, 0.13);
+}
+
+.multi-calc-status-dot,
+.multi-calc-screen-dot {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: #6df6ff;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.multi-calc-screen-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.multi-calc-shell .multi-calc-tab,
+.multi-calc-shell .multi-calc-key,
+.multi-calc-shell .multi-calc-history-actions button,
+.multi-calc-shell .multi-calc-copy {
+  border: 1px solid rgba(150, 230, 248, 0.4) !important;
+  color: #c7f8ff !important;
+  background: linear-gradient(145deg, rgba(191, 243, 255, 0.16), rgba(30, 69, 80, 0.74)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -2px 0 rgba(1, 12, 18, 0.38), 0 3px 8px rgba(0, 0, 0, 0.25) !important;
+}
+
+.multi-calc-shell .multi-calc-tab {
+  min-height: 2.15rem;
+  font-size: 0.92rem;
+  font-weight: 900;
+}
+
+.multi-calc-tab.tone-blue,
+.multi-calc-screen-card.tone-blue { --screen-color: #54caff; --screen-glow: rgba(84, 202, 255, 0.38); }
+.multi-calc-tab.tone-green,
+.multi-calc-screen-card.tone-green { --screen-color: #67f6b2; --screen-glow: rgba(103, 246, 178, 0.38); }
+.multi-calc-tab.tone-amber,
+.multi-calc-screen-card.tone-amber { --screen-color: #ffc55b; --screen-glow: rgba(255, 197, 91, 0.38); }
+.multi-calc-tab.tone-purple,
+.multi-calc-screen-card.tone-purple { --screen-color: #c89aff; --screen-glow: rgba(200, 154, 255, 0.38); }
+
+.multi-calc-shell .multi-calc-tab.tone-blue,
+.multi-calc-shell .multi-calc-tab.tone-green,
+.multi-calc-shell .multi-calc-tab.tone-amber,
+.multi-calc-shell .multi-calc-tab.tone-purple { color: var(--screen-color) !important; border-color: color-mix(in srgb, var(--screen-color) 65%, transparent) !important; }
+
+.multi-calc-shell .multi-calc-tab.is-active {
+  color: #edffff !important;
+  border-color: var(--screen-color, #61f6b1) !important;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--screen-color, #61f6b1) 33%, transparent), rgba(18, 55, 66, 0.88)) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--screen-color, #61f6b1) 14%, transparent), 0 0 22px var(--screen-glow, rgba(70, 235, 162, 0.38)), inset 0 1px 0 rgba(255, 255, 255, 0.26) !important;
+}
+
+.multi-calc-display {
+  margin-top: 0.55rem;
+  min-height: 6.1rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(145, 229, 247, 0.42);
+  border-radius: 0.7rem;
+  background:
+    linear-gradient(110deg, rgba(9, 27, 35, 0.86), rgba(19, 61, 70, 0.6)),
+    repeating-linear-gradient(90deg, transparent 0 12px, rgba(136, 235, 249, 0.04) 13px 14px);
+  box-shadow: inset 0 0 30px rgba(38, 223, 249, 0.07), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.multi-calc-expression {
+  min-height: 2.1rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  color: #8bf6ff;
+  font-family: "Cairo", ui-monospace, monospace;
+  font-size: clamp(1.85rem, 5vw, 3.15rem);
+  font-weight: 900;
+  line-height: 1;
+  text-align: end;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 18px rgba(83, 240, 255, 0.58);
+  white-space: nowrap;
+}
+
+.multi-calc-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(147, 230, 247, 0.24);
+  border-radius: 0.78rem;
+  background: rgba(1, 13, 20, 0.33);
+}
+
+.multi-calc-shell .multi-calc-key {
+  min-width: 0;
+  min-height: 2.35rem;
+  padding-inline: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 900;
+  transition: transform 150ms var(--ease-out), box-shadow 150ms var(--ease-out), border-color 150ms var(--ease-out);
+}
+
+.multi-calc-shell .multi-calc-key:hover:not(:disabled),
+.multi-calc-shell .multi-calc-tab:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: #7bf2ff !important;
+  box-shadow: 0 0 15px rgba(75, 224, 247, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.23) !important;
+}
+
+.multi-calc-shell .multi-calc-key:active:not(:disabled) { transform: translateY(1px) scale(0.98); }
+.multi-calc-shell .calc-key-operation { color: #8cf7ff !important; }
+.multi-calc-shell .calc-key-multiply { color: #d9a0ff !important; border-color: rgba(199, 124, 255, 0.7) !important; }
+.multi-calc-shell .calc-key-add { color: #8fffc2 !important; border-color: rgba(84, 239, 157, 0.7) !important; }
+.multi-calc-shell .calc-key-clear { color: #ffabb2 !important; border-color: rgba(251, 102, 117, 0.72) !important; }
+.multi-calc-shell .calc-key-percent { color: #fff4a6 !important; border-color: rgba(243, 201, 91, 0.68) !important; }
+.multi-calc-shell .calc-key-equals { color: #fff1a1 !important; border-color: rgba(244, 205, 101, 0.8) !important; background: linear-gradient(145deg, rgba(159, 124, 38, 0.55), rgba(72, 63, 30, 0.82)) !important; }
+.multi-calc-shell .calc-key-utility { font-size: 0.62rem; }
+
+.multi-calc-history-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.32rem;
+  margin: 0.5rem 0;
+}
+
+.multi-calc-history-actions button:last-child { grid-column: 1 / -1; }
+.multi-calc-history-actions button { min-height: 1.8rem; font-size: 0.6rem; }
+
+.multi-calc-screen-card {
+  padding: 0.52rem;
+  border: 1px solid rgba(157, 229, 246, 0.34);
+  border-radius: 0.72rem;
+  background: linear-gradient(130deg, rgba(92, 158, 172, 0.2), rgba(13, 34, 43, 0.88));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  transition: border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out), opacity 180ms var(--ease-out);
+}
+
+.multi-calc-screen-card.is-active { border-color: var(--screen-color, #61f6b1); box-shadow: 0 0 0 2px color-mix(in srgb, var(--screen-color, #61f6b1) 14%, transparent), 0 0 22px var(--screen-glow, rgba(80, 235, 184, 0.18)), inset 0 1px 0 rgba(255, 255, 255, 0.13); }
+.multi-calc-screen-card.is-disabled { border-color: rgba(255, 104, 119, 0.48); background: linear-gradient(145deg, rgba(84, 21, 36, 0.5), rgba(9, 28, 38, 0.9)); }
+.multi-calc-screen-card.is-disabled .multi-calc-screen-activate,
+.multi-calc-screen-card.is-disabled .multi-calc-screen-result,
+.multi-calc-screen-card.is-disabled .multi-calc-copy { opacity: 0.46; }
+.multi-calc-screen-card .multi-calc-screen-dot { background: var(--screen-color) !important; color: var(--screen-color); box-shadow: 0 0 13px var(--screen-glow); }
+
+.multi-calc-shell .multi-calc-enable-switch[data-state="checked"] { border-color: #59ef9e !important; background: linear-gradient(90deg, #11734c, #2ae68e) !important; box-shadow: 0 0 13px rgba(71, 244, 156, 0.54) !important; }
+.multi-calc-shell .multi-calc-enable-switch[data-state="unchecked"] { border-color: #ff6877 !important; background: linear-gradient(90deg, #702031, #e04b5e) !important; box-shadow: 0 0 13px rgba(255, 87, 110, 0.44) !important; }
+.multi-calc-shell .multi-calc-enable-switch [data-slot="switch-thumb"] { background: #f4fbff !important; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.48); }
+.multi-calc-enable-label.is-enabled { color: #9dffc8; }
+.multi-calc-enable-label.is-disabled { color: #ffabb3; }
+
+/* تقويم المهام الرقمي — لوحة زجاجية داكنة، مع أن اللون يعبّر عن أولوية المهمة لا عن نوعها. */
+.task-calendar-console {
+  isolation: isolate;
+  overflow: hidden;
+  color: #e7fbff;
+  border: 1px solid rgba(105, 239, 255, 0.44) !important;
+  background:
+    radial-gradient(circle at 86% 13%, rgba(38, 201, 226, 0.18), transparent 29%),
+    radial-gradient(circle at 6% 82%, rgba(20, 133, 151, 0.18), transparent 31%),
+    linear-gradient(142deg, rgba(8, 24, 34, 0.98), rgba(11, 17, 26, 0.97)) !important;
+  box-shadow: 0 0 0 1px rgba(199, 252, 255, 0.08) inset, 0 20px 44px rgba(3, 15, 24, 0.28), 0 0 25px rgba(62, 227, 241, 0.12);
+}
+.task-calendar-console::before { content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none; opacity: .32; background-image: linear-gradient(rgba(120, 239, 255, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(120, 239, 255, .05) 1px, transparent 1px); background-size: 30px 30px; mask-image: linear-gradient(90deg, transparent, black 28%, black 72%, transparent); }
+.task-calendar-console .ledger-head { border-bottom-color: rgba(108, 232, 244, 0.24); background: linear-gradient(90deg, rgba(80, 214, 228, 0.08), rgba(5, 18, 29, 0.08)); }
+.task-calendar-console .ledger-head h2 { color: #dfffff; font-size: .98rem; }
+.task-calendar-console .ledger-head > div:first-child > div > span:first-child { background: #59e8f4; box-shadow: 0 0 12px rgba(89, 232, 244, .75); }
+.task-calendar-console .ledger-head p { color: rgba(206, 244, 249, .68); }
+.task-calendar-console .ledger-register-code, .task-calendar-console .ledger-stamp { color: #b5f4fb; border-color: rgba(102, 224, 237, .28); background: rgba(25, 105, 121, .16); }
+.task-calendar-legend { display: flex; align-items: center; gap: .45rem; direction: rtl; }
+.task-calendar-legend span { display: inline-flex; align-items: center; gap: .27rem; color: rgba(220, 246, 249, .82); font-size: .63rem; white-space: nowrap; }
+.task-calendar-legend i, .task-calendar-priority-dot { width: .45rem; height: .45rem; border-radius: 999px; background: var(--priority-color); box-shadow: 0 0 11px var(--priority-glow); }
+.task-calendar-console .priority-high { --priority-color: #ff4058; --priority-glow: rgba(255, 64, 88, .85); }
+.task-calendar-console .priority-medium { --priority-color: #ffb34d; --priority-glow: rgba(255, 179, 77, .76); }
+.task-calendar-console .priority-low { --priority-color: #55e6f3; --priority-glow: rgba(85, 230, 243, .72); }
+.task-calendar-console-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); gap: .9rem; align-items: stretch; }
+.task-calendar-calendar-panel, .task-calendar-task-panel { position: relative; border: 1px solid rgba(122, 228, 239, .31); border-radius: .76rem; background: linear-gradient(145deg, rgba(31, 60, 69, .64), rgba(6, 22, 33, .86)); box-shadow: inset 0 1px 0 rgba(236, 255, 255, .13), 0 0 18px rgba(55, 220, 236, .08); }
+.task-calendar-calendar-panel { padding: .52rem; }
+.task-calendar-grid { width: 100% !important; padding: .25rem !important; background: transparent !important; color: #c9f7fb !important; }
+.task-calendar-grid .rdp-month { gap: .62rem; min-width: 0; }
+.task-calendar-grid .rdp-nav { top: .15rem; padding-inline: .12rem; }
+.task-calendar-grid .rdp-button_previous, .task-calendar-grid .rdp-button_next { color: #9bf6ff; border: 1px solid rgba(100, 233, 246, .46); background: rgba(29, 131, 148, .22); box-shadow: 0 0 13px rgba(55, 222, 238, .2); }
+.task-calendar-grid .rdp-button_previous:hover, .task-calendar-grid .rdp-button_next:hover { color: #fff; background: rgba(46, 191, 208, .42); }
+.task-calendar-grid .rdp-caption_label { color: #e5ffff; font-size: .9rem; font-weight: 800; letter-spacing: .03em; }
+.task-calendar-grid .rdp-weekday { color: rgba(194, 239, 243, .62); font-size: .66rem; }
+.task-calendar-grid .rdp-outside { color: rgba(184, 229, 234, .24); }
+.task-calendar-grid .rdp-today:not(.rdp-selected) .task-calendar-day { border-color: rgba(104, 239, 248, .58); color: #e6ffff; }
+.task-calendar-grid .task-calendar-day { position: relative; min-width: 0 !important; min-height: 2.65rem; border: 1px solid transparent; border-radius: .55rem; color: rgba(202, 244, 248, .86); background: rgba(2, 14, 23, .16); transition: transform 160ms var(--ease-out), border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out); }
+.task-calendar-grid .task-calendar-day:hover { transform: translateY(-1px); border-color: rgba(112, 238, 248, .46); background: rgba(35, 133, 149, .2); }
+.task-calendar-grid .task-calendar-day.priority-high, .task-calendar-grid .task-calendar-day.priority-medium, .task-calendar-grid .task-calendar-day.priority-low { border-color: var(--priority-color); color: #f5ffff; background: linear-gradient(145deg, color-mix(in srgb, var(--priority-color) 27%, transparent), rgba(9, 27, 36, .82)); box-shadow: 0 0 0 1px color-mix(in srgb, var(--priority-color) 20%, transparent) inset, 0 0 15px var(--priority-glow); }
+.task-calendar-grid .task-calendar-day.priority-high { animation: calendar-high-priority-pulse 1.8s ease-in-out infinite; }
+.task-calendar-grid .task-calendar-day.is-selected-date { outline: 2px solid #82f8ff; outline-offset: 2px; box-shadow: 0 0 20px rgba(84, 237, 249, .6); }
+.task-calendar-data-dots { display: flex; gap: .17rem; align-items: center; justify-content: center; min-height: .32rem; }
+.task-calendar-data-dots i { width: .23rem; height: .23rem; border-radius: 99px; background: var(--priority-color); box-shadow: 0 0 7px var(--priority-glow); }
+.task-calendar-task-panel { padding: .85rem; }
+.task-calendar-task-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; padding-bottom: .7rem; border-bottom: 1px solid rgba(116, 221, 231, .22); }
+.task-calendar-kicker { display: flex; align-items: center; gap: .32rem; margin: 0; color: #89eaf2; font-size: .64rem; font-weight: 700; }
+.task-calendar-kicker svg { width: .82rem; height: .82rem; }
+.task-calendar-task-header h3 { margin: .22rem 0 0; color: #e9ffff; font-size: .92rem; font-weight: 800; }
+.task-calendar-count { display: inline-flex; align-items: center; gap: .25rem; min-width: 2rem; justify-content: center; border: 1px solid rgba(93, 234, 246, .38); border-radius: .5rem; padding: .27rem .37rem; color: #93f7ff; background: rgba(39, 150, 168, .17); font-size: .73rem; font-weight: 800; }
+.task-calendar-count svg { width: .8rem; height: .8rem; }
+.task-calendar-task-list { display: grid; gap: .58rem; margin: .72rem 0 0; padding: 0; list-style: none; }
+.task-calendar-task-list li { position: relative; overflow: hidden; border: 1px solid color-mix(in srgb, var(--priority-color) 58%, transparent); border-radius: .62rem; padding: .7rem; background: linear-gradient(135deg, color-mix(in srgb, var(--priority-color) 16%, rgba(6, 20, 29, .9)), rgba(8, 27, 37, .9)); box-shadow: 0 0 14px color-mix(in srgb, var(--priority-glow) 33%, transparent), inset 0 1px 0 rgba(255, 255, 255, .1); }
+.task-calendar-task-list li::after { content: ""; position: absolute; inset-inline-start: 0; top: 13%; bottom: 13%; width: 2px; background: var(--priority-color); box-shadow: 0 0 10px var(--priority-glow); }
+.task-calendar-task-top { display: flex; align-items: flex-start; gap: .42rem; padding-inline-start: .25rem; }
+.task-calendar-task-top p { margin: 0; color: #efffff; font-size: .77rem; font-weight: 700; line-height: 1.45; }
+.task-calendar-task-meta { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: .52rem; padding-inline-start: .66rem; color: rgba(211, 244, 247, .72); font-size: .62rem; }
+.task-calendar-task-meta span { display: inline-flex; align-items: center; gap: .25rem; }
+.task-calendar-task-meta svg { width: .76rem; height: .76rem; color: var(--priority-color); }
+.task-calendar-empty { display: grid; place-items: center; gap: .48rem; min-height: 12rem; padding: 1rem; color: rgba(196, 235, 240, .62); text-align: center; }
+.task-calendar-empty svg { width: 2rem; height: 2rem; color: #5ce7f2; filter: drop-shadow(0 0 8px rgba(92, 231, 242, .52)); }
+.task-calendar-empty p { margin: 0; max-width: 15rem; font-size: .72rem; line-height: 1.65; }
+@keyframes calendar-high-priority-pulse { 0%, 100% { box-shadow: 0 0 12px rgba(255, 64, 88, .45); } 50% { box-shadow: 0 0 23px rgba(255, 64, 88, .94), 0 0 34px rgba(255, 64, 88, .45); } }
+@media (max-width: 540px) { .task-calendar-console .ledger-head { align-items: flex-start; } .task-calendar-legend { flex-wrap: wrap; justify-content: flex-end; max-width: 10.5rem; } .task-calendar-calendar-panel { padding: .25rem; } .task-calendar-grid .task-calendar-day { min-height: 2.3rem; } .task-calendar-grid .rdp-weekday { font-size: .58rem; } }
+@media (prefers-reduced-motion: reduce) { .task-calendar-grid .task-calendar-day.priority-high { animation: none; } }
+
+.multi-calc-screen-activate {
+  min-width: 0;
+  color: #e8fbff;
+  font-size: 0.8rem;
+  text-align: start;
+}
+
+.multi-calc-screen-result {
+  margin-top: 0.25rem;
+  color: #85f8ff;
+  font-family: "Cairo", ui-monospace, monospace;
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 0 13px rgba(89, 239, 255, 0.45);
+}
+
+.multi-calc-shell .multi-calc-copy { min-height: 1.65rem; padding-inline: 0.42rem; font-size: 0.56rem; }
+
+.multi-calc-totals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(157, 229, 246, 0.2);
+}
+
+.multi-calc-totals > div {
+  padding: 0.45rem;
+  border: 1px solid rgba(104, 229, 247, 0.42);
+  border-radius: 0.6rem;
+  background: rgba(49, 141, 161, 0.18);
+}
+.multi-calc-totals p { display: flex; gap: 0.24rem; align-items: center; color: #bceff8; font-size: 0.56rem; font-weight: 700; }
+.multi-calc-totals strong { display: block; margin-top: 0.24rem; color: #81f6ff; font-family: "Cairo", ui-monospace, monospace; font-size: 0.82rem; }
+
+.multi-calc-history-list { max-height: 7rem; display: grid; gap: 0.28rem; margin-top: 0.55rem; overflow-y: auto; }
+.multi-calc-history-list button { width: 100%; padding: 0.35rem 0.42rem; border: 1px solid rgba(156, 229, 246, 0.22); border-radius: 0.42rem; color: #bceff8; background: rgba(4, 17, 24, 0.35); text-align: start; }
+.multi-calc-history-list p { color: rgba(197, 246, 255, 0.58); font-size: 0.56rem; }
+.multi-calc-history-list strong { display: block; margin-top: 0.08rem; color: #83f6ff; font-size: 0.7rem; }
+.multi-calc-empty-history { padding: 0.7rem 0 0.15rem; color: rgba(201, 246, 255, 0.54); font-size: 0.62rem; text-align: center; }
+
+@media (min-width: 1024px) {
+  .multi-calc-body { direction: ltr; grid-template-columns: minmax(0, 1.55fr) minmax(220px, 0.85fr); padding: 0.7rem; }
+  .multi-calc-side { order: 2; }
+  .multi-calc-workbench { order: 1; }
+  .multi-calc-side,
+  .multi-calc-workbench { direction: rtl; }
+}
+
+@media (max-width: 640px) {
+  .multi-calc-header { align-items: flex-start; padding: 0.65rem; }
+  .multi-calc-header-icon { width: 2rem; height: 2rem; }
+  .multi-calc-header-chip { padding: 0.18rem 0.35rem; }
+  .multi-calc-body { padding: 0.45rem; }
+  .multi-calc-workbench, .multi-calc-side { padding: 0.5rem; }
+  .multi-calc-display { min-height: 5.45rem; padding: 0.6rem; }
+  .multi-calc-expression { margin-top: 0.8rem; font-size: 2rem; }
+  .multi-calc-keypad { gap: 0.32rem; padding: 0.4rem; }
+  .multi-calc-shell .multi-calc-key { min-height: 2.15rem; font-size: 0.82rem; }
+  .multi-calc-shell .calc-key-utility { font-size: 0.55rem; }
+}
+
+/* يحتفظ التقويم بإطاره داخل البطاقة ويستبدل سطح اليوم الحالي الأبيض بسطح داكن مقروء. */
+.task-calendar-console,
+.task-calendar-console > div:last-child,
+.task-calendar-console-grid,
+.task-calendar-calendar-panel,
+.task-calendar-task-panel {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.task-calendar-console { width: 100%; overflow: hidden; }
+.task-calendar-console > div:last-child { overflow: hidden; }
+.task-calendar-grid .rdp-root,
+.task-calendar-grid .rdp-months,
+.task-calendar-grid .rdp-month { width: 100%; min-width: 0; }
+.task-calendar-grid .rdp-today { background: transparent !important; color: inherit !important; }
+.task-calendar-grid .rdp-today .task-calendar-day,
+.task-calendar-grid .task-calendar-day[data-selected-single="true"] {
+  color: #ecffff !important;
+  border-color: #77f4ff !important;
+  background: linear-gradient(145deg, rgba(9, 50, 65, 0.98), rgba(5, 25, 36, 0.98)) !important;
+  box-shadow: 0 0 0 1px rgba(133, 248, 255, 0.28) inset, 0 0 17px rgba(70, 226, 242, 0.34) !important;
+}
+
+.task-calendar-grid .rdp-today .task-calendar-day span,
+.task-calendar-grid .task-calendar-day[data-selected-single="true"] span { opacity: 1 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .calculator-screen-switch { animation: none; }
+}
